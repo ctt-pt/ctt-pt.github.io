@@ -382,6 +382,18 @@ div.submeter {
 	font-family: arial;
 	font-weight: bold;
 	cursor: pointer;
+	-float: right;
+}
+div.submeter2 {
+	width: 200px;
+	background-color: rgb(150,150,150);
+	color: white;
+	padding: 5px;
+	font-family: arial;
+	font-weight: bold;
+	cursor: pointer;
+	float: right;
+	font-size: 12px;
 }
 .resultados {
 	width: 1000px;
@@ -9982,15 +9994,26 @@ a:hover, a:active {
 				<OPTION>ZEBREIRA - 9905420 - POSTO ZEBREIRA #23409</OPTION>
 			</select>
 		</div>
-
 		<br>
+
+			<div class="submete" align="center" onclick="" id="submet" onfocus="infoSubmeter()">
+					<a href="template pedido de fundos.xlsx" download="template pedido de fundos.xlsx">
+				DESCARREGAR TEMPLATE PARA PEDIDO DE FUNDOS
+					</a>
+			</div>
+		</a>
+
+
 		<div class="individual3" align="center">
 			<br>
+
+
 			<div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
 				GERAR EMAIL
 			</div>
 			<br>
-
+	</div>
+	<br>
 			<div class="foot" align="right">
 				PEDIDO/RECOLHA DE FUNDOS v1.0
 			</div>
