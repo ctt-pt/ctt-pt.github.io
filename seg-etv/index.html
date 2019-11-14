@@ -13,7 +13,6 @@
 	//$(function() {
 	//$("#text-one").load("instalações.txt");
 	//});
-
 	function atualizar() {
 		//avisos para permissão internet explorer
 		permissão.style.display = "none";
@@ -21,7 +20,6 @@
 		co.style.display = "none";
 		cpostal.style.display = "none";
 		localidade.style.display = "none";
-
 		//obter tipo
 		var tipo = document.getElementsByName('tipo');
 		for (var i = 0, length = tipo.length; i < length; i++)
@@ -42,7 +40,6 @@
 				break;
 			}
 		}
-
 		//obter filtro
 		var filtro = document.getElementsByName('filtro');
 		for (var i = 0, length = filtro.length; i < length; i++)
@@ -83,14 +80,12 @@
 			}
 		}
 		//alert(filtro)
-
 	}
 	function submeter(){
 		var tipo = ""
 		var data = ""
 		var instalação = ""
 		var erro = ""
-
 		//obter tipo
 		var tipo = document.getElementsByName('tipo');
 		for (var i = 0, length = tipo.length; i < length; i++)
@@ -99,22 +94,20 @@
 			{
 				// do whatever you want with the checked radio
 				if(tipo[i].value == "pedido"){
-					var tipo = "Pedido de Fundos";
+					var tipo = "Pedido de Fornecimento de Fundos";
 				}
 				if(tipo[i].value == "recolha"){
-					var tipo = "Recolha de Fundos";
+					var tipo = "Pedido de Recolha de Fundos";
 				}
 				if(tipo[i].value == "ambos"){
-					var tipo = "Pedido de fundos e Recolha de fundos";
+					var tipo = "Pedido de Fornecimento/Recolha de fundos";
 				}
 				// only one radio can be logically checked, don't check the rest
 				break;
 			}
 		}
-
 		//obter DATA
 		var data = document.getElementById("data").value;
-
 		//obter filtro
 		var filtro = document.getElementsByName('filtro');
 		for (var i = 0, length = filtro.length; i < length; i++)
@@ -154,7 +147,6 @@
 				break;
 			}
 		}
-
 		//obter instalação
 		if(filtro == "nome"){
 			var e = document.getElementById("nome");
@@ -179,14 +171,12 @@
 			var value = e.options[e.selectedIndex].value;
 			var instalação = e.options[e.selectedIndex].text;
 		}
-
 		if (instalação == ""){
 			erro = "instalação não definida"
 		}
 		if (data == ""){
 			erro = "Data não definida"
 		}
-
 		if (instalação != ""){
 			var instTotal = instalação.length;
 			var posIMO = instalação.indexOf("#");
@@ -194,14 +184,12 @@
 			var instalação = instalação.substring(0,posIMO)
 			//alert(cttimo)
 		}
-
 		if (erro !="" ){
 			alert(erro)
 		}
-
 		if (erro =="" ){
 			var assunto = "mailto:"+"&cc=imotalismaservice"+"@"+"ctt.pt"+"?subject="+encodeURIComponent(tipo)+" - "+encodeURIComponent(instalação)+" - "+encodeURIComponent(data);
-			var corpo = "&body=■ FORMULÁRIO DE PEDIDO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0ATIPO: "+encodeURIComponent(tipo)+"%0D%0ADATA: "+encodeURIComponent(data)+"%0D%0AINSTALAÇÃO: "+encodeURIComponent(instalação)+"%0D%0ACTTIMO: "+encodeURIComponent(cttimo)+"%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL";
+			var corpo = "&body=■ FORMULÁRIO DE PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0ATIPO: "+encodeURIComponent(tipo)+"%0D%0ADATA: "+encodeURIComponent(data)+"%0D%0AINSTALAÇÃO: "+encodeURIComponent(instalação)+"%0D%0ACTTIMO: "+encodeURIComponent(cttimo)+"%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL";
 			var email = assunto+corpo;
 			window.location.href = email;
 		}
@@ -304,7 +292,6 @@ div.descrição {
 	font-family: arial;
 	font-weight: bold;
 }
-
 input.data {
 	width: 200px;
 	-background-color: rgb(222,0,0);
@@ -313,7 +300,6 @@ input.data {
 	font-family: arial;
 	font-weight: bold;
 }
-
 select.instalação {
 	width: 1000px;
 	-background-color: rgb(222,0,0);
@@ -322,9 +308,8 @@ select.instalação {
 	font-family: arial;
 	font-weight: bold;
 }
-
 div.individualradio {
-	width: 410px;
+	width: 810px;
 	-background-color: rgb(222,0,0);
 	-color: white;
 	padding: 5px;
@@ -445,15 +430,15 @@ a:hover, a:active {
 				</div>
 				<br>
 				<div class="individualradio" id="descCategoria">
-					<input class="radios" type="radio" checked="checked" name="tipo" value="pedido" onchange="atualizar()"> PEDIDO DE FUNDOS
+					<input class="radios" type="radio" checked="checked" name="tipo" value="pedido" onchange="atualizar()"> PEDIDO DE FORNECIMENTO DE FUNDOS
 				</div>
 
 				<div class="individualradio" id="descCategoria">
-					<input class="radios" type="radio" name="tipo" value="recolha" onchange="atualizar()"> RECOLHA DE FUNDOS
+					<input class="radios" type="radio" name="tipo" value="recolha" onchange="atualizar()"> PEDIDO DE RECOLHA DE FUNDOS
 				</div>
 
 				<div class="individualradio" id="descCategoria">
-					<input class="radios" type="radio" name="tipo" value="ambos" onchange="atualizar()"> PEDIDO DE FUNDOS E RECOLHA DE FUNDOS
+					<input class="radios" type="radio" name="tipo" value="ambos" onchange="atualizar()"> PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS
 				</div>
 			</div>
 			<br>
@@ -9993,34 +9978,35 @@ a:hover, a:active {
 				<OPTION>ZAMBUJEIRA DO MAR - 9904613 - POSTO ZAMBUJEIRA DO MAR #41544</OPTION>
 				<OPTION>ZEBREIRA - 9905420 - POSTO ZEBREIRA #23409</OPTION>
 			</select>
-		</div>
-		<br>
+					</div>
+					<br>
 
-			<div class="submete" align="center" onclick="" id="submet" onfocus="infoSubmeter()">
-					<a href="template pedido de fundos.xlsx" download="template pedido de fundos.xlsx">
-				DESCARREGAR TEMPLATE PARA PEDIDO DE FUNDOS
+
+
+
+					<div class="individual3" align="center">
+						<div class="submete" align="center" onclick="" id="submet" onfocus="infoSubmeter()">
+								<a href="template pedido de fundos.xlsx" download="template pedido de fundos.xlsx">
+							DESCARREGAR TEMPLATE PARA PEDIDO DE FUNDOS
+								</a>
+						</div>
 					</a>
-			</div>
-		</a>
+						<br>
 
 
-		<div class="individual3" align="center">
-			<br>
+						<div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
+							GERAR EMAIL
+						</div>
+						<br>
+				</div>
+				<br>
+						<div class="foot" align="right">
+							PEDIDO/RECOLHA DE FUNDOS v1.0
+						</div>
+						<br><br>
 
+					</div>
 
-			<div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
-				GERAR EMAIL
-			</div>
-			<br>
-	</div>
-	<br>
-			<div class="foot" align="right">
-				PEDIDO/RECOLHA DE FUNDOS v1.0
-			</div>
-			<br><br>
-
-		</div>
-
-	</div>
-</body>
-</html>
+				</div>
+			</body>
+			</html>
