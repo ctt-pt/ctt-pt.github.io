@@ -189,7 +189,7 @@
 		}
 		if (erro =="" ){
 			var assunto = "mailto:"+"&cc=imotalismaservice"+"@"+"ctt.pt"+"?subject="+encodeURIComponent(tipo)+" - "+encodeURIComponent(instalação)+" - "+encodeURIComponent(data);
-			var corpo = "&body=■ FORMULÁRIO DE PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0ATIPO: "+encodeURIComponent(tipo)+"%0D%0ADATA: "+encodeURIComponent(data)+"%0D%0AINSTALAÇÃO: "+encodeURIComponent(instalação)+"%0D%0ACTTIMO: "+encodeURIComponent(cttimo)+"%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL";
+			var corpo = "&body=■ FORMULÁRIO DE PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0A►CTTIMO: "+encodeURIComponent(cttimo)+"%0D%0A►TIPO: "+encodeURIComponent(tipo)+"%0D%0A►DATA: "+encodeURIComponent(data)+"%0D%0A►INSTALAÇÃO: "+encodeURIComponent(instalação)+"%0D%0A%0D%0A%0D%0A%0D%0A_______________________________________________%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL";
 			var email = assunto+corpo;
 			window.location.href = email;
 		}
