@@ -284,6 +284,13 @@
     -padding: 10px;
     float: right
   }
+select.curto4 {
+    width: 100px;
+    height: 30px;
+    -padding: 10px;
+    margin-right: 10px;
+    float: right
+  }
   </style>
 
   <script type="text/javascript">
@@ -294,9 +301,17 @@
     terceiroMatrícula.style.display = "none";
     terceiroCompanhia.style.display = "none";
     terceiroApólice.style.display = "none";
+    autoridadeIDon.style.display = "none";
 
     permissão.style.display = "none";
     permissãoie.style.display = "none";
+
+    var e = document.getElementById("autoridade");
+    var value = e.options[e.selectedIndex].value;
+    var autoridade = e.options[e.selectedIndex].text;
+    if (autoridade == "Sim"){
+      autoridadeIDon.style.display = "block";
+    }
 
     var e = document.getElementById("terceiro");
     var value = e.options[e.selectedIndex].value;
@@ -426,6 +441,18 @@
       var erro = erro+"\n"+"N.º de veículo não indicado"
     }
 
+    var e = document.getElementById("autoridade");
+    var value = e.options[e.selectedIndex].value;
+    var autoridade = e.options[e.selectedIndex].text;
+    if (autoridade == "Sim"){
+        var autoridade = document.getElementById("autoridadeID").value;
+    }
+    if (autoridade){
+    }
+    else {
+      var erro = erro+"\n"+"Autoridade não identificada"
+    }
+
     var danos = document.getElementById("danos").value;
     if (danos){
     }
@@ -482,17 +509,14 @@
       var apólice = "Não existe terceiro"
     }
 
-    var e = document.getElementById("autoridade");
-    var value = e.options[e.selectedIndex].value;
-    var autoridade = e.options[e.selectedIndex].text;
 
-    var e = document.getElementById("declaração");
-    var value = e.options[e.selectedIndex].value;
-    var declaração = e.options[e.selectedIndex].text;
 
     var e = document.getElementById("acidente");
     var value = e.options[e.selectedIndex].value;
     var acidente = e.options[e.selectedIndex].text;
+    if (acidente == "Sim"){
+        var acidente = "Acidente de Trabalho";
+    }
 
     var e = document.getElementById("culpa");
     var value = e.options[e.selectedIndex].value;
@@ -503,9 +527,9 @@
     }
     else {
       var assunto = "mailto: paulo.j.machado"+"@"+"ctt.pt"+"?subject=SINISTRO "+encodeURIComponent(nctt)+" - "+encodeURIComponent(ano)+"/"+encodeURIComponent(mês)+"/"+encodeURIComponent(dia);
-      var corpo = "&body=■ PARTICIPAÇÃO DE SINISTRO"+"%0D%0A%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL!%0D%0A_______________________________________________";
+      var corpo = "&body=■ PARTICIPAÇÃO DE SINISTRO"+"%0D%0A%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL:%0D%0A%0D%0A     1) Declaração Amigável de Acidente Automóvel%0D%0A%0D%0A     2) Fotografias dos danos no veículo%0D%0A%0D%0A_______________________________________________";
       var corpo = corpo + "%0D%0A%0D%0A►Data: "+encodeURIComponent(ano)+encodeURIComponent(mês)+encodeURIComponent(dia)+"%0D%0A►N.º Mecanográfico: "+encodeURIComponent(mecanográfico)+"%0D%0A►Veículo: "+encodeURIComponent(nctt);
-      var corpo = corpo+"%0D%0A►Intervenção da Autoridade: "+encodeURIComponent(autoridade)+"%0D%0A►Declaração amigável: "+encodeURIComponent(declaração)+"%0D%0A►Acidente laboral: "+encodeURIComponent(acidente)+"%0D%0A►% de culpa do condutor: "+encodeURIComponent(culpa)+"%0D%0A►Danos no veículo: "+encodeURIComponent(danos)+"%0D%0A►Descrição: "+encodeURIComponent(descrição);
+      var corpo = corpo+"%0D%0A►Intervenção da Autoridade: "+encodeURIComponent(autoridade)+"%0D%0A►Acidente laboral: "+encodeURIComponent(acidente)+"%0D%0A►% de culpa do condutor: "+encodeURIComponent(culpa)+"%0D%0A►Danos no veículo: "+encodeURIComponent(danos)+"%0D%0A►Descrição: "+encodeURIComponent(descrição);
 if (terceiro == "Sim"){
   var corpo = corpo+"%0D%0A%0D%0A►Acidente com terceiro: "+encodeURIComponent(terceiro)+"%0D%0A►Nome do condutor: "+encodeURIComponent(nomeTerceiro)+"%0D%0A►Matrícula: "+encodeURIComponent(matrícula)+"%0D%0A►Companhia de seguros: "+encodeURIComponent(companhia)+"%0D%0A►Apólice: "+encodeURIComponent(apólice);
 }
@@ -562,7 +586,7 @@ var corpo = corpo + "%0D%0A_______________________________________________";
       </-----img class="meca" src="meca.jpg" alt=""--->
 
       <form class="curto4" action="index.html" method="post">
-        <input class="curto4" type="text" name="" value="" id="nmec" oninput="mostrar()" title="Conversão de n.º Mecanográfico&#13;X0xxxxx -> 94xxxxx&#13;PSHxxxxx -> 980xxxxx" maxlength="7">
+        <input class="curto4" type="text" name="" value="" id="nmec" oninput="mostrar()" title="7 dígitos" maxlength="7">
         <div class="individual" id="descZona">
           N.º MECANOGRÁFICO
         </div>
@@ -571,14 +595,14 @@ var corpo = corpo + "%0D%0A_______________________________________________";
 
       <!---------------------------------------------------------------mecanografico-->
       <form class="curto4" action="index.html" method="post">
-        <input class="curto4" type="text" name="" value="" id="nctt" oninput="mostrar()" title="Conversão de n.º Mecanográfico&#13;X0xxxxx -> 94xxxxx&#13;PSHxxxxx -> 980xxxxx" maxlength="8">
+        <input class="curto4" type="text" name="" value="" id="nctt" oninput="mostrar()" title="Exemplo: C-1234-A" maxlength="8">
         <div class="individual" id="descZona">
           N.º CTT (VEÍCULO)
         </div>
       </form>
       <! ------------------------------------------------------------- OBJ CC -->
-      <form class="curto" action="index.html" method="post" id="cc">
-        <select class="escolha" name="Piso" id="autoridade" onchange="mostrar()" onfocus="infoEspecialidade()">
+      <form class="curto3" action="index.html" method="post" id="cc">
+        <select class="escolha2" name="Piso" id="autoridade" onchange="mostrar()" title="Esteve alguma autoridade presente no acidente?" onfocus="infoEspecialidade()">
           <option value="">Não</option>
           <option value="">Sim</option>
         </select>
@@ -587,38 +611,35 @@ var corpo = corpo + "%0D%0A_______________________________________________";
         </div>
       </form>
       <! ------------------------------------------------------------- OBJ CC -->
-      <form class="curto" action="index.html" method="post" id="cc">
-        <select class="escolha" name="Piso" id="declaração" onchange="mostrar()" onfocus="infoEspecialidade()">
+      <form class="curto" action="index.html" method="post" id="autoridadeIDon">
+<input class="curto" type="text" name="" value="" id="autoridadeID" oninput="mostrar()" title="Exemplo: PSP COIMBRA" maxlength="15">
+        <div class="individual" id="descObjetoCC">
+          DESCRIÇÃO DA AUTORIDADE
+        </div>
+      </form>
+      <! ------------------------------------------------------------- OBJ CC -->
+      <form class="curto3" action="index.html" method="post" id="cc">
+        <select class="escolha2" name="Piso" id="acidente" onchange="mostrar()" title="Ferimentos resultantes do acidente" onfocus="infoEspecialidade()">
           <option value="">Não</option>
           <option value="">Sim</option>
         </select>
         <div class="individual" id="descObjetoCC">
-          DECLARAÇÃO AMIGÁVEL
-        </div>
-      </form>
-      <! ------------------------------------------------------------- OBJ CC -->
-      <form class="curto" action="index.html" method="post" id="cc">
-        <select class="escolha" name="Piso" id="acidente" onchange="mostrar()" onfocus="infoEspecialidade()">
-          <option value="">Acidente de Trabalho</option>
-          <option value="">Acidente de Serviço</option>
-        </select>
-        <div class="individual" id="descObjetoCC">
-          ACIDENTE LABORAL
+          CONDUTOR CTT FERIDO?
         </div>
       </form>
       <!---------------------------------------------------------------mecanografico-->
       <form class="curto3" action="index.html" method="post">
-        <select class="escolha2" name="Piso" id="culpa" onchange="mostrar()" onfocus="infoEspecialidade()">
+        <select class="escolha2" name="Piso" id="culpa" onchange="mostrar()" onfocus="infoEspecialidade()" title="% de culpa assumida pelo condutor referente à origem do acidente">
           <option value="">100%</option>
           <option value="">50%</option>
           <option value="">0%</option>
         </select>
         <div class="individual" id="descZona">
-          CULPA CONDUTOR CTT (%)
+          % DE CULPA CONDUTOR CTT
         </div>
       </form>
       <form class="médio" action="index.html" method="post">
-        <input class="médio" type="text" name="" value="" id="danos" oninput="mostrar()" maxlength="40">
+        <input class="médio" type="text" name="" value="" id="danos" oninput="mostrar()" title="resumo dos danos" maxlength="40">
         <div class="individual" id="descZona">
           DANOS DO VEÍCULO
         </div>
@@ -629,12 +650,12 @@ var corpo = corpo + "%0D%0A_______________________________________________";
     <div class="desc2" id="descZona" align="">
       DESCRIÇÃO
     </div>
-    <textarea class="obs"  name="name" rows="5"  id="descrição" oninput="mostrar()" onfocus=""></textarea>
+    <textarea class="obs"  name="name" rows="5"  id="descrição" oninput="mostrar()" title="Detalhes do acidente e dos danos resultantes" onfocus=""></textarea>
   </form>
 
   <! ------------------------------------------------------------- OBJ CC -->
   <form class="curto3" action="index.html" method="post" id="cc">
-    <select class="escolha2" name="Piso" id="terceiro" onchange="mostrar()" onfocus="infoEspecialidade()">
+    <select class="escolha2" name="Piso" id="terceiro" onchange="mostrar()" title="Acidente foi com outro veículo" onfocus="infoEspecialidade()">
       <option value="">Não</option>
       <option value="">Sim</option>
 
