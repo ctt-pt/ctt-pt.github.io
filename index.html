@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+  <title>GEF - Participação de Sinistros</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body onload="mostrar()">
+
+  <style>
+  .notification-message-unread {
+    width: 1024px;
+    font-family: arial;
+    background-color: rgb(222,0,0);
+    color: white;
+    padding: 10px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 40px;
+    animation: blinker 1s linear infinite;
+  }
+  @keyframes blinker {
+    50% {
+      background-color: white;
+    }
+  }
+  img.ie{
+    display: block;
+    padding-left: 51px;
+    padding-right: 51px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(222,0,0);
+    animation: blinker 1s linear infinite;
+  }
+  img.veículo {
+    width: 1000px;
+    -float: right;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .caixa {
+    height: 100px;
+    width: 80px;
+    -border-style: solid;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-right: 0;
+    margin-left: 0;
+    -margin-top: 15px;
+  }
+  .caixa2 {
+    height: 100px;
+    width: 130px;
+    -border-style: solid;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 45px;
+  }
+  .grid1 {
+    width: 1000px;
+  }
+  .grid2 {
+    width: 650px;
+  }
+  div.pagina {
+    max-width: 1024px;
+    margin: auto;
+  }
+
+  div.foot {
+    padding: 10px;
+    font-family: arial;
+    font-size: 8px;
+  }
+
+  div.grafico {
+    -padding: 10px;
+    -font-family: arial;
+    -font-size: 8px;
+    margin-left: 140px;
+  }
+
+
+  input[type=checkbox] {
+    margin-TOP: 6px;
+    margin-bottom: 6px;
+    -margin-left: 10px;
+    transform: scale(1.5);
+    -float: right;
+    vertical-align: middle;
+    -align: middle;
+    -width: 41px;
+    -padding: 10px;
+  }
+
+
+
+
+  .desc3 {
+    width: 1021px;
+    font-family: arial;
+    -background-color: rgb(222,0,0);
+    color: white;
+    padding: 10px;
+    font-family: arial;
+    font-weight: bold;
+  }
+  form.individual2 {
+    width: 997px;
+    padding-top: 10px;
+  }
+  textarea.desc {
+    float: right;
+    font-family: arial;
+    width: 760px;
+  }
+  textarea.obs {
+    ;width: 1021px;
+    height:100%;
+  }
+
+
+  img.meca {
+    float: right;
+    width: 300px;
+  }
+  form.caixa1 {
+    border: 2px solid red;
+    border-radius: 4px;
+  }
+  form.longo {
+    width: 1024px;
+    padding-top: 10px;
+  }
+  form.médio {
+    width: 600px;
+    padding-top: 10px;
+  }
+  form.médio2 {
+    width: 800px;
+    padding-top: 10px;
+  }
+  form.curto {
+    width: 450px;
+    padding-top: 10px;
+  }
+  form.curto2 {
+    width: 460px;
+    padding-top: 10px;
+  }
+  form.curto3 {
+    width: 310px;
+    padding-top: 10px;
+  }
+  form.curto4 {
+    width: 360px;
+    padding-top: 10px;
+  }
+  form.data1 {
+    width: 410px;
+    padding-top: 10px;
+  }
+  form.data2 {
+    width: 430px;
+    padding-top: 4px;
+  }
+  form.meca {
+    width: 404px;
+    padding-top: 10px;
+  }
+  div.individual {
+    width: 240px;
+    background-color: rgb(222,0,0);
+    color: white;
+    padding: 5px;
+    font-family: arial;
+    font-weight: bold;
+  }
+  div.legenda {
+    -width: 240px;
+    -background-color: rgb(222,0,0);
+    -color: white;
+    padding: 5px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 10px;
+    float: right;
+  }
+  div.matrícula {
+    -width: 200px;
+    -background-color: rgb(222,0,0);
+    -color: white;
+    padding-top: 0px;
+    margin-right: 10px;
+    margin-left: 0px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 20px;
+    float: right
+  }
+  div.submeter {
+    width: 200px;
+    background-color: rgb(222,0,0);
+    color: white;
+    padding: 10px;
+    font-family: arial;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  div.desc {
+    width: 1024px;
+    font-family: arial;
+    background-color: rgb(0,0,0);
+    color: white;
+    padding: 5px;
+    font-family: arial;
+    font-weight: bold;
+  }
+  div.desc2 {
+    ;width: 1021px;
+    font-family: arial;
+    background-color: rgb(222,0,0);
+    color: white;
+    padding: 5px;
+    font-family: arial;
+    font-weight: bold;
+    margin-left: 0px;
+  }
+  div.global {
+    width: 800px;
+    -border-style: solid;
+    border-width: 5px;
+  }
+
+
+
+  textarea.obs {
+    ;width: 1021px;
+    height:100%;
+  }
+  input.longo {
+    width: 774px;
+    height: 30px;
+    padding: 5px;
+    float: right;
+    -text-transform: capitalize;
+  }
+  input.médio {
+    width: 350px;
+    height: 30px;
+    padding: 5px;
+    float: right;
+    -text-transform: capitalize;
+  }
+  input.curto {
+    width: 200px;
+    height: 30px;
+    padding: 10px;
+    float: right
+  }
+  input.curto2 {
+    width: 45px;
+    height: 30px;
+    padding: 10px;
+    margin-right: 10px;
+    float: right
+  }
+  input.curto3 {
+    width: 58px;
+    height: 30px;
+    padding: 10px;
+    margin-right: 10px;
+    float: right
+  }
+  input.curto4 {
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    margin-right: 10px;
+    float: right
+  }
+  select {
+    width: 200px;
+    height: 30px;
+    -padding: 10px;
+    float: right
+  }
+  select.escolha2 {
+    width: 60px;
+    height: 30px;
+    -padding: 10px;
+    float: right
+  }
+  select.curto4 {
+    width: 100px;
+    height: 30px;
+    -padding: 10px;
+    margin-right: 10px;
+    float: right
+  }
+  div.danos {
+    width: 200px;
+    font-family: arial;
+    -background-color: rgb(222,0,0);
+    -color: white;
+    padding: 10px;
+    -font-family: arial;
+    -font-weight: bold;
+    -margin-left: 0px;
+    float: right;
+    -border-style: solid;
+    -border-width: medium;
+  }
+  div.danos2 {
+    width: 500px;
+    font-family: arial;
+    -background-color: rgb(222,0,0);
+    -color: white;
+    -padding: 5px;
+    font-family: arial;
+    -font-weight: bold;
+    margin-left: 0px;
+    -float: right;
+    border-style: solid;
+    border-width: medium;
+  }
+  div.danos1 {
+    width: 615px;
+    -font-family: arial;
+    -background-color: rgb(222,0,0);
+    -color: white;
+    -padding: 5px;
+    font-family: arial;
+    font-weight: bold;
+    margin-left: 0px;
+    float: right;
+    -border-style: solid;
+    -border-width: medium;
+  }
+  div.box1 {
+    background-color: rgb(222,0,0);
+    width: 1000px;
+    padding-top: 4px;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  .row {
+    flex: 25%;
+    -max-width: 25%;
+    -padding: 0 4px;
+  }
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .row img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+  </style>
+
+  <script type="text/javascript">
+
+  function mostrar() {
+    formDanos.style.display = "none";
+    dadosTerceiro.style.display = "none";
+    terceiroMostrar.style.display = "none";
+    terceiroNome.style.display = "none";
+    terceiroMatrícula.style.display = "none";
+    terceiroCompanhia.style.display = "none";
+    terceiroApólice.style.display = "none";
+    autoridadeIDon.style.display = "none";
+
+    permissão.style.display = "none";
+    permissãoie.style.display = "none";
+
+    var e = document.getElementById("autoridade");
+    var value = e.options[e.selectedIndex].value;
+    var autoridade = e.options[e.selectedIndex].text;
+    if (autoridade == "Sim"){
+      autoridadeIDon.style.display = "block";
+    }
+
+    var e = document.getElementById("terceiro");
+    var value = e.options[e.selectedIndex].value;
+    var terceiro = e.options[e.selectedIndex].text;
+    //alert("terceiro: "+terceiro);
+    if (terceiro == "Sim")
+    {
+      dadosTerceiro.style.display = "block";
+      terceiroNome.style.display = "block";
+      terceiroMatrícula.style.display = "block";
+      terceiroCompanhia.style.display = "block";
+      terceiroApólice.style.display = "block";
+    }
+    if (terceiro == "Não")
+    {
+      dadosTerceiro.style.display = "none";
+      terceiroNome.style.display = "none";
+      terceiroMatrícula.style.display = "none";
+      terceiroCompanhia.style.display = "none";
+      terceiroApólice.style.display = "none";
+    }
+
+    //obter danos
+    var danos = ""
+    var danosResumo = ""
+    var x = document.getElementById("danos.te").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.te").value+", "
+      danosResumo=danosResumo+"TE, "
+    }
+    var x = document.getElementById("danos.t").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.t").value+", "
+      danosResumo=danosResumo+"T, "
+    }
+    var x = document.getElementById("danos.td").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.td").value+", "
+      danosResumo=danosResumo+"TD, "
+    }
+    var x = document.getElementById("danos.let").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.let").value+", "
+      danosResumo=danosResumo+"LET, "
+    }
+    var x = document.getElementById("danos.m").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.m").value+", "
+      danosResumo=danosResumo+"M, "
+    }
+    var x = document.getElementById("danos.ldt").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.ldt").value+", "
+      danosResumo=danosResumo+"LDT, "
+    }
+    var x = document.getElementById("danos.le").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.le").value+", "
+      danosResumo=danosResumo+"LE, "
+    }
+    var x = document.getElementById("danos.tj").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.tj").value+", "
+      danosResumo=danosResumo+"TJ, "
+    }
+    var x = document.getElementById("danos.ld").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.ld").value+", "
+      danosResumo=danosResumo+"LD, "
+    }
+    var x = document.getElementById("danos.lef").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.lef").value+", "
+      danosResumo=danosResumo+"LEF, "
+    }
+    var x = document.getElementById("danos.c").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.c").value+", "
+      danosResumo=danosResumo+"C, "
+    }
+    var x = document.getElementById("danos.ldf").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.ldf").value+", "
+      danosResumo=danosResumo+"LDF, "
+    }
+    var x = document.getElementById("danos.fe").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.fe").value+", "
+      danosResumo=danosResumo+"FE, "
+    }
+    var x = document.getElementById("danos.f").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.f").value+", "
+      danosResumo=danosResumo+"F, "
+    }
+    var x = document.getElementById("danos.fd").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.fd").value+", "
+      danosResumo=danosResumo+"FD, "
+    }
+    tamDanos = danos.length
+    if (tamDanos>0) {
+      danos = danos.substring(0,(tamDanos-2))+"."
+    }
+    document.getElementById("danos").value = danosResumo;
+
+  }
+
+
+
+
+  function submeter() {
+    var erro = ""
+
+    //validação da data
+    var anoAtual = new Date().getFullYear();
+    var mêsAtual = new Date().getMonth()+1
+    var diaAtual = new Date().getDate();
+
+    var ano = document.getElementById("ano").value;
+    var mês = document.getElementById("mês").value;
+    var dia = document.getElementById("dia").value;
+    var tamAno = ano.length
+    var tamMês = mês.length
+    var tamDia = dia.length
+    if (ano){
+      if (ano>anoAtual || ano<2018){
+        var erro = erro+"\n"+"ano <2018 ou > "+anoAtual
+      }
+      if (tamAno != 4){
+        var erro = erro+"\n"+"ano não tem 4 algarismos "+tamAno
+      }
+    }
+    else {
+      var erro = erro+"\n"+"Ano não está preenchido"
+    }
+
+    if (mês){
+      if (mês>12 || mês<1){
+        var erro = erro+"\n"+"mês inválido"
+      }
+    }
+    else {
+      var erro = erro+"\n"+"Mês não está preenchido"
+    }
+
+    if (dia){
+      if (dia>31 || dia<1){
+        var erro = erro+"\n"+"dia inválido"
+      }
+    }
+    else {
+      var erro = erro+"\n"+"Dia não está preenchido"
+    }
+
+    //validação de número mecanográfico
+    var mecanográfico = document.getElementById("nmec").value;
+    if (mecanográfico.length<7){
+      var mecanográfico = ""
+    }
+    if (mecanográfico.length > 6){
+      var mec1 = mecanográfico.substring(0,1)
+      var mec1 = mec1.toUpperCase()
+      if (mec1 == "P"){
+        var mec2 = mecanográfico.substring(mecanográfico.length-4,mecanográfico.lenght)
+        var mecanográfico = "980"+mec2
+      }
+      else
+      if (mec1 == "B"){
+        var mec2 = mecanográfico.substring(mecanográfico.length-4,mecanográfico.lenght)
+        var mecanográfico = "914"+mec2
+      }
+      else
+      if (mec1 == "T"){
+        var mec2 = mecanográfico.substring(mecanográfico.length-4,mecanográfico.lenght)
+        var mecanográfico = "915"+mec2
+      }
+      else
+      if (mec1 == "M"){
+        var mec2 = mecanográfico.substring(mecanográfico.length-5,mecanográfico.lenght)
+        var mecanográfico = "97"+mec2
+      }
+      else
+      if (mec1 == "X"){
+        var mec2 = mecanográfico.substring(mecanográfico.length-5,mecanográfico.lenght)
+        var mecanográfico = "94"+mec2
+      }
+      else
+      if (mec1 == "G"){
+        var mec2 = mecanográfico.substring(mecanográfico.length-6,mecanográfico.lenght)
+        var mecanográfico = "5"+mec2
+      }
+    }
+    if (mecanográfico.length<7 || mecanográfico.length>7){
+      var erro = erro+"\n"+"Número mecanográfico inválido"
+      //document.getElementById("nmec").value=""
+    }
+
+
+    var nctt = document.getElementById("nctt").value;
+    if (nctt){
+    }
+    else {
+      var erro = erro+"\n"+"N.º de veículo não indicado"
+    }
+
+    var e = document.getElementById("autoridade");
+    var value = e.options[e.selectedIndex].value;
+    var autoridade = e.options[e.selectedIndex].text;
+    if (autoridade == "Sim"){
+      var autoridade = document.getElementById("autoridadeID").value;
+    }
+    if (autoridade){
+    }
+    else {
+      var erro = erro+"\n"+"Autoridade não identificada"
+    }
+
+    var descrição = document.getElementById("descrição").value;
+    if (descrição){
+    }
+    else {
+      var erro = erro+"\n"+"Descrição não preenchida"
+    }
+
+    var e = document.getElementById("terceiro");
+    var value = e.options[e.selectedIndex].value;
+    var terceiro = e.options[e.selectedIndex].text;
+    if (terceiro == "Sim"){
+      var nomeTerceiro = document.getElementById("nomeTerceiro").value;
+      if (nomeTerceiro){
+      }
+      else {
+        var erro = erro+"\n"+"Nome do outro condutor não preenchido"
+      }
+      var mat1 = document.getElementById("mat1").value;
+      var mat1 = mat1.toUpperCase()
+      var mat2 = document.getElementById("mat2").value;
+      var mat2 = mat2.toUpperCase()
+      var mat3 = document.getElementById("mat3").value;
+      var mat3 = mat3.toUpperCase()
+      if (mat1 == "" || mat2 == "" || mat3 == ""){
+        var erro = erro+"\n"+"Matrícula do terceiro não está completa"
+      }
+      else {
+        var matrícula = mat1+"-"+mat2+"-"+mat3
+      }
+      var companhia = document.getElementById("companhia").value;
+      if (companhia){
+      }
+      else {
+        var erro = erro+"\n"+"Companhia de seguros não indicada"
+      }
+      var apólice = document.getElementById("apólice").value;
+      if (apólice){
+      }
+      else {
+        var erro = erro+"\n"+"Apólice não indicada"
+      }
+    }
+    else {
+      var nomeTerceiro = "Não existe terceiro"
+      var matrícula = "Não existe terceiro"
+      var companhia = "Não existe terceiro"
+      var apólice = "Não existe terceiro"
+    }
+
+
+
+    var e = document.getElementById("acidente");
+    var value = e.options[e.selectedIndex].value;
+    var acidente = e.options[e.selectedIndex].text;
+    if (acidente == "Sim"){
+      var acidente = "Acidente de Trabalho";
+    }
+
+    var e = document.getElementById("culpa");
+    var value = e.options[e.selectedIndex].value;
+    var culpa = e.options[e.selectedIndex].text;
+
+    //obter danos
+    var danos = ""
+    var danosResumo = ""
+    var x = document.getElementById("danos.te").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.te").value+", "
+      danosResumo=danosResumo+"TE, "
+    }
+    var x = document.getElementById("danos.t").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.t").value+", "
+      danosResumo=danosResumo+"T, "
+    }
+    var x = document.getElementById("danos.td").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.td").value+", "
+      danosResumo=danosResumo+"TD, "
+    }
+    var x = document.getElementById("danos.let").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.let").value+", "
+      danosResumo=danosResumo+"LET, "
+    }
+    var x = document.getElementById("danos.m").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.m").value+", "
+      danosResumo=danosResumo+"M, "
+    }
+    var x = document.getElementById("danos.ldt").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.ldt").value+", "
+      danosResumo=danosResumo+"LDT, "
+    }
+    var x = document.getElementById("danos.le").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.le").value+", "
+      danosResumo=danosResumo+"LE, "
+    }
+    var x = document.getElementById("danos.tj").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.tj").value+", "
+      danosResumo=danosResumo+"TJ, "
+    }
+    var x = document.getElementById("danos.ld").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.ld").value+", "
+      danosResumo=danosResumo+"LD, "
+    }
+    var x = document.getElementById("danos.lef").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.lef").value+", "
+      danosResumo=danosResumo+"LEF, "
+    }
+    var x = document.getElementById("danos.c").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.c").value+", "
+      danosResumo=danosResumo+"C, "
+    }
+    var x = document.getElementById("danos.ldf").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.ldf").value+", "
+      danosResumo=danosResumo+"LDF, "
+    }
+    var x = document.getElementById("danos.fe").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.fe").value+", "
+      danosResumo=danosResumo+"FE, "
+    }
+    var x = document.getElementById("danos.f").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.f").value+", "
+      danosResumo=danosResumo+"F, "
+    }
+    var x = document.getElementById("danos.fd").checked;
+    if (x==true) {
+      danos=danos+document.getElementById("danos.fd").value+", "
+      danosResumo=danosResumo+"FD, "
+    }
+    tamDanos = danos.length
+    if (tamDanos>0) {
+      danos = danos.substring(0,(tamDanos-2))+"."
+    }
+    tamDanos = danosResumo.length
+    if (tamDanos>0) {
+      danosResumo = danosResumo.substring(0,(tamDanos-2))+"."
+    }
+    document.getElementById("danos").value = danosResumo;
+
+    if (danos == ""){
+      var erro = erro+"\n"+"Danos não indicados"
+    }
+    if (erro !=""){
+      alert (erro)
+    }
+    else {
+      var assunto = "mailto: paulo.j.machado"+"@"+"ctt.pt"+"?subject=SINISTRO "+encodeURIComponent(nctt)+" - "+encodeURIComponent(ano)+"/"+encodeURIComponent(mês)+"/"+encodeURIComponent(dia);
+      var corpo = "&body=■ PARTICIPAÇÃO DE SINISTRO"+"%0D%0A%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL:%0D%0A%0D%0A     1) Declaração Amigável de Acidente Automóvel%0D%0A%0D%0A     2) Fotografias dos danos no veículo%0D%0A%0D%0A_______________________________________________";
+      var corpo = corpo + "%0D%0A%0D%0A►Data: "+encodeURIComponent(ano)+encodeURIComponent(mês)+encodeURIComponent(dia)+"%0D%0A►N.º Mecanográfico: "+encodeURIComponent(mecanográfico)+"%0D%0A►Veículo: "+encodeURIComponent(nctt);
+      var corpo = corpo+"%0D%0A►Intervenção da Autoridade: "+encodeURIComponent(autoridade)+"%0D%0A►Acidente laboral: "+encodeURIComponent(acidente)+"%0D%0A►Culpa do condutor: "+encodeURIComponent(culpa)+"%0D%0A►Danos: "+encodeURIComponent(danos)+"%0D%0A►Danos no veículo (resumo): "+encodeURIComponent(danosResumo)+"%0D%0A►Descrição: "+encodeURIComponent(descrição);
+      if (terceiro == "Sim"){
+        var corpo = corpo+"%0D%0A%0D%0A►Acidente com terceiro: "+encodeURIComponent(terceiro)+"%0D%0A►Nome do condutor: "+encodeURIComponent(nomeTerceiro)+"%0D%0A►Matrícula: "+encodeURIComponent(matrícula)+"%0D%0A►Companhia de seguros: "+encodeURIComponent(companhia)+"%0D%0A►Apólice: "+encodeURIComponent(apólice);
+      }
+      else {
+        var corpo = corpo+"%0D%0A%0D%0A►Acidente com terceiro: "+encodeURIComponent(terceiro)+"%0D%0A►Nome do condutor: não existe terceiro%0D%0A►Matrícula: não existe terceiro%0D%0A►Companhia de seguros: não existe terceiro%0D%0A►Apólice: não existe terceiro";
+      }
+      var corpo = corpo + "%0D%0A_______________________________________________";
+
+      //var corpo= corpo + "%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL";
+      //var corpo = "&body=■ PARTICIPAÇÃO DE SINISTRO"+"%0D%0A%0D%0AData: "+encodeURIComponent(ano)+encodeURIComponent(mês)+encodeURIComponent(dia)+"%0D%0AN.º Mecanográfico: "+encodeURIComponent(mecanográfico)+"%0D%0AVeículo: "+encodeURIComponent(ctt)+"%0D%0AIntervenção da Autoridade: "+encodeURIComponent(autoridade)+"%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL";
+      var email = assunto+corpo;
+      window.location.href = email;
+    }
+  }
+  </script>
+
+  <!---------------------------------------------------------------página-->
+  <div class="pagina">
+    <br>
+    <img src="sinistro-banner.jpg" alt="" id="banner">
+    <br><br>
+    </<div class="">
+      <div class="notification-message-unread" id="permissão" align="center" >
+        ESTE FORMULÁRIO NECESSITA DE PERMISSÃO PARA EXECUTAR SCRIPTS!
+      </div>
+      <img src="ie.jpg" alt="" class="ie" id="permissãoie">
+
+      <!---------------------------------------------------------------veículo-->
+      <form class="longo" action="index.html" method="post">
+
+        <div class="desc" id="descZona" align="left">
+          DADOS DO SINISTRO
+        </div>
+      </form>
+      <div class="global">
+        <!---------------------------------------------------------------matrícula-->
+        <form class="data1" action="index.html" method="post">
+        </----div class="legenda" id="descZona">
+        </----    ANO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp MÊS &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp DIA
+      </---div>
+    </form>
+
+
+    <form class="data2" action="index.html" method="post">
+      <input class="curto2" type="text" name="" value="" id="dia" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="2">
+      <input class="curto2" type="text" name="" value="" id="mês" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="2">
+      <input class="curto3" type="text" name="" value="" id="ano" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="4">
+      <div class="individual" id="descZona">
+        DATA (AAAA-MM-DD)
+      </div>
+
+    </form>
+    <!---------------------------------------------------------------mecanografico-->
+  </-----img class="meca" src="meca.jpg" alt=""--->
+
+  <form class="curto4" action="index.html" method="post">
+    <input class="curto4" type="text" name="" value="" id="nmec" oninput="mostrar()" title="7 dígitos" maxlength="7">
+    <div class="individual" id="descZona">
+      N.º MECANOGRÁFICO
+    </div>
+  </form>
+
+
+  <!---------------------------------------------------------------mecanografico-->
+  <form class="curto4" action="index.html" method="post">
+    <input class="curto4" type="text" name="" value="" id="nctt" oninput="mostrar()" title="Exemplo: C-1234-A" maxlength="8">
+    <div class="individual" id="descZona">
+      N.º CTT (VEÍCULO)
+    </div>
+  </form>
+  <! ------------------------------------------------------------- OBJ CC -->
+  <form class="curto3" action="index.html" method="post" id="cc">
+    <select class="escolha2" name="Piso" id="autoridade" onchange="mostrar()" title="Esteve alguma autoridade presente no acidente?" onfocus="infoEspecialidade()">
+      <option value="">Não</option>
+      <option value="">Sim</option>
+    </select>
+    <div class="individual" id="descObjetoCC">
+      INTERVENÇÃO AUTORIDADE
+    </div>
+  </form>
+  <! ------------------------------------------------------------- OBJ CC -->
+  <form class="curto" action="index.html" method="post" id="autoridadeIDon">
+    <input class="curto" type="text" name="" value="" id="autoridadeID" oninput="mostrar()" title="Exemplo: PSP COIMBRA" maxlength="15">
+    <div class="individual" id="descObjetoCC">
+      DESCRIÇÃO DA AUTORIDADE
+    </div>
+  </form>
+  <! ------------------------------------------------------------- OBJ CC -->
+  <form class="curto3" action="index.html" method="post" id="cc">
+    <select class="escolha2" name="Piso" id="acidente" onchange="mostrar()" title="Ferimentos resultantes do acidente" onfocus="infoEspecialidade()">
+      <option value="">Não</option>
+      <option value="">Sim</option>
+    </select>
+    <div class="individual" id="descObjetoCC">
+      CONDUTOR CTT FERIDO?
+    </div>
+  </form>
+  <!---------------------------------------------------------------mecanografico-->
+  <form class="curto3" action="index.html" method="post">
+    <select class="escolha2" name="Piso" id="culpa" onchange="mostrar()" onfocus="infoEspecialidade()" title="% de culpa assumida pelo condutor referente à origem do acidente">
+      <option value="">100%</option>
+      <option value="">50%</option>
+      <option value="">0%</option>
+    </select>
+    <div class="individual" id="descZona">
+      CULPA CONDUTOR CTT
+    </div>
+  </form>
+  <form class="longo" action="index.html" method="post">
+
+    <div class="desc" id="descZona" align="left">
+      DANOS NO VEÍCULO
+    </div>
+  </form>
+  <form class="médio" id="formDanos" action="index.html" method="post">
+    <input class="médio" type="text" name="" value="" id="danos" oninput="mostrar()" title="resumo dos danos" maxlength="40">
+    <div class="individual" id="descZona">
+      DANOS DO VEÍCULO
+    </div>
+  </form>
+</form>
+</div>
+<form class="longo" action="index.html" method="post">
+  <div class="danos" id="descZona" align="left">
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Frente Esquerda" id="danos.fe" > 13 - Frente Esquerda<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Frente" id="danos.f" > 14 - Frente<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Frente Direita" id="danos.fd" > 15 - Frente Direita<br>
+  </div>
+  <div class="danos" id="descZona" align="left">
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esq. (frente)" id="danos.lef" > 10 - Lateral Esq. (frente)<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Capô" id="danos.c" > 11 - Capô<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Dir. (frente)" id="danos.ldf" > 12 - Lateral Dir. (frente)<br>
+</div>
+  <div class="danos" id="descZona" align="left">
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esquerda" id="danos.le" > 7 - Lateral Esquerda<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Tejadilho" id="danos.tj" > 8 - Tejadilho<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Direita" id="danos.ld" > 9 - Lateral Direita<br>
+</div>
+  <div class="danos" id="descZona" align="left">
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esq. (traseira)" id="danos.let" > 4 - Lateral Esq. (traseira)<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Mala" id="danos.m" > 5 - Mala<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Dir. (traseira)" id="danos.ldt" > 6 - Lateral Dir. (traseira)<br>
+
+  </div>
+  <div class="danos" id="descZona" align="left">
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira Esquerda" id="danos.te" > 1 - Traseira Esquerda<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira" id="danos.t" > 2 - Traseira<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira Direita" id="danos.td" > 3 - Traseira Direita<br>
+
+  </div>
+</form>
+
+<img class="veículo" src="carro.jpg" alt="" id="auto">
+
+<form class="longo" action="index.html" method="post">
+  <div class="desc2" id="descZona" align="">
+    DESCRIÇÃO
+  </div>
+  <textarea class="obs"  name="name" rows="5"  id="descrição" oninput="mostrar()" title="Detalhes do acidente e dos danos resultantes" onfocus=""></textarea>
+</form>
+<form class="longo" id="dadosTerceiro" action="index.html" method="post">
+  <div class="desc" id="descZona" align="left">
+    DADOS DO TERCEIRO
+  </div>
+</form>
+<! ------------------------------------------------------------- OBJ CC -->
+<form class="curto3" action="index.html" method="post" id="cc">
+  <select class="escolha2" name="Piso" id="terceiro" onchange="mostrar()" title="Acidente foi com outro veículo" onfocus="infoEspecialidade()">
+    <option value="">Não</option>
+    <option value="">Sim</option>
+
+  </select>
+  <div class="individual" id="descObjetoCC">
+    ACIDENTE COM TERCEIRO
+  </div>
+</form>
+<br>
+
+<form id="terceiroMostrar">
+  <!---------------------------------------------------------------condutor-->
+  <form class="longo" action="index.html" method="post">
+  </form>
+
+
+  <!---------------------------------------------------------------nome-->
+  <form class="médio" action="index.html" method="post" id="terceiroNome">
+    <input class="médio" type="text" name="" value="" id="nomeTerceiro" oninput="mostrar()" maxlength="40">
+    <div class="individual" id="descZona">
+      NOME DO CONDUTOR
+    </div>
+  </form>
+  <!---------------------------------------------------------------matrícula-->
+  <form class="curto" action="index.html" method="post" id="terceiroMatrícula">
+    <input id="mat3" class="curto2" maxlength="2" align="center" type="text"  oninput="atualizar()">
+    <div class="matrícula" id="descZona">
+      -
+    </div>
+    <input id="mat2" class="curto2" maxlength="2" align="center" type="text" oninput="atualizar()">
+    <div class="matrícula" id="descZona">
+      -
+    </div>
+    <input id="mat1" class="curto2" maxlength="2" align="center" type="text" oninput="atualizar()">
+    <div class="individual" id="descZona">
+      MATRÍCULA
+    </div>
+  </form>
+  <!---------------------------------------------------------------nome-->
+  <form class="médio" action="index.html" method="post" id="terceiroCompanhia">
+    <input class="médio" type="text" name="" value="" id="companhia" oninput="atualizar()" maxlength="15">
+    <div class="individual" id="descZona">
+      COMPANHIA DE SEGUROS
+    </div>
+  </form>
+
+  <!---------------------------------------------------------------mecanografico-->
+  <form class="curto" action="index.html" method="post" id="terceiroApólice">
+    <input class="curto" type="text" name="" value="" id="apólice" oninput="atualizar()" maxlength="20">
+    <div class="individual" id="descZona">
+      APÓLICE
+    </div>
+  </form>
+</form>
+
+<form class="longo"  action="index.html" method="post">
+  <div class="desc"  align="left">
+
+  </div>
+</form>
+
+<br><br>
+<div class="individual3" align="center">
+  <br>
+  <div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
+    SUBMETER PARTICIPAÇÃO
+  </div>
+  <br>
+  <div class="foot" align="right">
+    FORMULÁRIO GEF SINISTROS v1.1
+  </div>
+  <br><br>
+
+</div>
+
+</body>
+</html>
