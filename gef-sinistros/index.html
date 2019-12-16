@@ -664,10 +664,10 @@
       }
     }
     else {
-      var nomeTerceiro = "Não existe terceiro"
-      var matrícula = "Não existe terceiro"
-      var companhia = "Não existe terceiro"
-      var apólice = "Não existe terceiro"
+      var nomeTerceiro = "Não existe"
+      var matrícula = "Não existe"
+      var companhia = "Não existe"
+      var apólice = "Não existe"
     }
 
 
@@ -684,87 +684,147 @@
     var culpa = e.options[e.selectedIndex].text;
 
     //obter danos
-    var danos = ""
+    var danos = "" //document.getElementById("danos.te").value+", "+document.getElementById("danos.t").value+", "+document.getElementById("danos.td").value+", "+document.getElementById("danos.let").value+", "+document.getElementById("danos.m").value+", "+document.getElementById("danos.ldt").value+", "+document.getElementById("danos.le").value+", "+document.getElementById("danos.tj").value+", "+document.getElementById("danos.ld").value+", "+document.getElementById("danos.lef").value+", "+document.getElementById("danos.c").value+", "+document.getElementById("danos.ldf").value+", "+document.getElementById("danos.fe").value+", "+document.getElementById("danos.f").value+", "+document.getElementById("danos.fd").value+", "
     var danosResumo = ""
     var x = document.getElementById("danos.te").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.te").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.te").value+", "
       danosResumo=danosResumo+"TE, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.t").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.t").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.t").value+", "
       danosResumo=danosResumo+"T, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.td").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.td").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.td").value+", "
       danosResumo=danosResumo+"TD, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.let").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.let").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.let").value+", "
       danosResumo=danosResumo+"LET, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.m").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.m").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.m").value+", "
       danosResumo=danosResumo+"M, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.ldt").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.ldt").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.ldt").value+", "
       danosResumo=danosResumo+"LDT, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.le").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.le").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.le").value+", "
       danosResumo=danosResumo+"LE, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.tj").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.tj").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.tj").value+", "
       danosResumo=danosResumo+"TJ, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.ld").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.ld").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.ld").value+", "
       danosResumo=danosResumo+"LD, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.lef").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.lef").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.lef").value+", "
       danosResumo=danosResumo+"LEF, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.c").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.c").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.c").value+", "
       danosResumo=danosResumo+"C, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.ldf").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.ldf").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.ldf").value+", "
       danosResumo=danosResumo+"LDF, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.fe").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.fe").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.fe").value+", "
       danosResumo=danosResumo+"FE, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.f").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.f").value+", "
+      danos=danos+"X, "
+      //danos=danos+document.getElementById("danos.f").value+", "
       danosResumo=danosResumo+"F, "
+    }
+    else {
+      danos=danos+", "
     }
     var x = document.getElementById("danos.fd").checked;
     if (x==true) {
-      danos=danos+document.getElementById("danos.fd").value+", "
+      danos=danos+"X"
+      //danos=danos+document.getElementById("danos.fd").value //+", "
       danosResumo=danosResumo+"FD, "
     }
-    tamDanos = danos.length
-    if (tamDanos>0) {
-      danos = danos.substring(0,(tamDanos-2))+"."
+    else {
+      //danos=danos+". "
     }
+    //tamDanos = danos.length
+    //if (tamDanos>0) {
+    //  danos = danos.substring(0,(tamDanos-2))+"."
+    //}
     tamDanos = danosResumo.length
     if (tamDanos>0) {
       danosResumo = danosResumo.substring(0,(tamDanos-2))+"."
@@ -786,7 +846,7 @@
         var corpo = corpo+"%0D%0A%0D%0A►Acidente com terceiro: "+encodeURIComponent(terceiro)+"%0D%0A►Nome do condutor: "+encodeURIComponent(nomeTerceiro)+"%0D%0A►Matrícula: "+encodeURIComponent(matrícula)+"%0D%0A►Companhia de seguros: "+encodeURIComponent(companhia)+"%0D%0A►Apólice: "+encodeURIComponent(apólice);
       }
       else {
-        var corpo = corpo+"%0D%0A%0D%0A►Acidente com terceiro: "+encodeURIComponent(terceiro)+"%0D%0A►Nome do condutor: não existe terceiro%0D%0A►Matrícula: não existe terceiro%0D%0A►Companhia de seguros: não existe terceiro%0D%0A►Apólice: não existe terceiro";
+        var corpo = corpo+"%0D%0A%0D%0A►Acidente com terceiro: "+encodeURIComponent(terceiro)+"%0D%0A►Nome do condutor: não existe%0D%0A►Matrícula: não existe%0D%0A►Companhia de seguros: não existe%0D%0A►Apólice: não existe";
       }
       var corpo = corpo + "%0D%0A_______________________________________________";
 
