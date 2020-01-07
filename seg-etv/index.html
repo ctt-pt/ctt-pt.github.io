@@ -367,6 +367,17 @@ div.tipo{
 	font-family: arial;
 	font-weight: bold;
 }
+div.tipo2{
+	-border-style: solid;
+	border-width: 2px;
+	border-color: rgb(222,0,0);
+	width: 1000px;
+	-background-color: #bbb;
+	-color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+}
 div.submeter {
 	border-radius: 6px;
 	width: 200px;
@@ -474,9 +485,9 @@ a:hover, a:active {
 
 
 				<a href="Template pedido de fundos.xlsx" download="template pedido de fundos.xlsx">
-				<div class="submeter3"  onclick="template()" id="submeterPedido" onfocus="infoSubmeter()">
-					OPCIONAL: DESCARREGAR TEMPLATE DE REQUISIÇÃO DE FUNDOS
-				</div>
+					<div class="submeter3"  onclick="template()" id="submeterPedido" onfocus="infoSubmeter()">
+						OPCIONAL: DESCARREGAR TEMPLATE DE REQUISIÇÃO DE FUNDOS
+					</div>
 				</a>
 			</div>
 			<br>
@@ -2699,32 +2710,30 @@ a:hover, a:active {
 			</select>
 		</br>
 
-		</div class="submeter3"  onclick="criar()" id="submeterPedido" onfocus="infoSubmeter()">
-			</	OPCIONAL: SOLICITAR CRIAÇÃO DE INSTALAÇÃO INEXISTENTE NA LISTA
-			</div>
-		</div>
-	</br>
+	</div class="submeter3"  onclick="criar()" id="submeterPedido" onfocus="infoSubmeter()">
+	</	OPCIONAL: SOLICITAR CRIAÇÃO DE INSTALAÇÃO INEXISTENTE NA LISTA
+</div>
+
+</br>
 
 
-		<div class="individual3" align="center">
+<div class="tipo2" align="center">
 
+</br>
 
-		</br>
+<div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
+	ENVIAR
+</div>
+<br>
 
-		<div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
-			ENVIAR
-		</div>
-		<br>
+<br>
 
-	<br>
-
-	<div class="foot" align="right">
-		PEDIDO/RECOLHA DE FUNDOS v1.3
-	</div>
-	<br><br>
+<div class="foot" align="right">
+	PEDIDO/RECOLHA DE FUNDOS v1.4
+</div>
+<br><br>
 
 </div>
 
-</div>
 </body>
 </html>
