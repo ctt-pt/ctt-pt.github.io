@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">
 <head>
@@ -188,7 +189,7 @@
 			alert(erro)
 		}
 		if (erro =="" ){
-			var assunto = "mailto:"+"&cc=imotalismaservice"+"@"+"ctt.pt"+"?subject="+encodeURIComponent(tipo)+" - "+encodeURIComponent(instalação)+" - "+encodeURIComponent(data);
+			var assunto = "mailto:"+"?cc=imotalismaservice"+"@"+"ctt.pt"+"&subject="+encodeURIComponent(tipo)+" - "+encodeURIComponent(instalação)+" - "+encodeURIComponent(data);
 			var corpo = "&body=■ FORMULÁRIO DE PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0A►CTTIMO: "+encodeURIComponent(cttimo)+"%0D%0A►TIPO: "+encodeURIComponent(tipo)+"%0D%0A►DATA: "+encodeURIComponent(data)+"%0D%0A►INSTALAÇÃO: "+encodeURIComponent(instalação)+"%0D%0A%0D%0A%0D%0A%0D%0A_______________________________________________%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL";
 			var email = assunto+corpo;
 			window.location.href = email;
@@ -2745,7 +2746,7 @@ a:hover, a:active {
 <br>
 
 <div class="foot" align="right">
-	PEDIDO/RECOLHA DE FUNDOS v1.4
+	PEDIDO/RECOLHA DE FUNDOS v1.5
 </div>
 <br><br>
 
