@@ -212,6 +212,7 @@
 		document.getElementById("posto8").checked = false;
 		document.getElementById("posto9").checked = false;
 		document.getElementById("posto10").checked = false;
+		document.getElementById("posto0").checked = false;
 		postos1.style.opacity = 0;
 		postos2.style.opacity = 0;
 		postos3.style.opacity = 0;
@@ -364,6 +365,13 @@
 		}
 
 		var listaPostos = ["POSTO ÁGUA DE PAU [40024/5000]","POSTO ÁGUAS DE MOURA [40029/24176]","POSTO ALBERNOA [40038/24192]","POSTO ALMODÔVAR [40074/24142]","POSTO APÚLIA (ESPOSENDE) [22114/22184]","POSTO ARADAS [40122/23362]","POSTO ARGONCILHE [40134/23345]","POSTO ARRIFES [40142/340]","POSTO AVANCA (ESTARREJA) [40154/23192]","POSTO AZEVEDO (PORTO) [22126/22135]","POSTO BAIRRO DA BOAVISTA (LISBOA) [30222/21295]","POSTO BAIRRO DO HOSPITAL (FUNCHAL) [29971/24971]","POSTO BALTAR [40178/22258]","POSTO BARRANCOS [30106/24180]","POSTO BRINCHES [40243/24224]","POSTO CABRELA [30191/24178]","POSTO CAJADOS [30137/24135]","POSTO CALDAS DA SAÚDE [40276/22307]","POSTO CALDAS DE S. JORGE [40278/23345]","POSTO CAMARATE [40284/21279]","POSTO CAMPINHO (REGUENGOS DE MONSARAZ) [40290/24208]","POSTO CAMPO (VALONGO) [40291/22324]","POSTO CAMPO ALEGRE (PORTO) [30093/22261]","POSTO CANHA [40302/24176]","POSTO CANHAS [40303/334]","POSTO CANIÇAL [40306/316]","POSTO CAPELAS [40310/340]","POSTO CARREGOSA (VALE DE CAMBRA) [40326/23274]","POSTO CAXARIAS [30224/21256]","POSTO CHAO DE COUCE [40383/23124]","POSTO CORGA (LOBÃO) [40419/23345]","POSTO CORUJEIRA (PORTO) [25004/22135]","POSTO COVELO (GONDOMAR) [40752/22205]","POSTO CUBA [30172/24192]","POSTO CURRAL DAS FREIRAS [41527/24971]","POSTO DAS OLIVEIRAS (RIO TINTO) [30089/22286]","POSTO DELÃES [40454/22319]","POSTO EIRAS (COIMBRA) [40469/23196]","POSTO FARALHÃO [30236/24135]","POSTO FEIRA NOVA (ARIZ) [40524/22230]","POSTO FERCAP (PAÇOS DE BRANDÃO) [40525/23345]","POSTO FERRAGUDO [30150/24162]","POSTO FOZ SOUSA (GONDOMAR) [40759/22205]","POSTO FREGUESIA DE SERZEDO (VILA NOVA DE GAIA) [40588/22278]","POSTO FREIXIANDA [24981/21256]","POSTO GALVEIAS (PONTE DE SÔR) [40614/24196]","POSTO GENS (FOZ DO SOUSA) [40770/22205]","POSTO GRIJO (VILA NOVA DE GAIA) [22206/22160]","POSTO GUEIFÃES [40640/22348]","POSTO JOÃO PAULO II (VILA REAL) [40668/22341]","POSTO JOVIM (GONDOMAR) [40670/22205]","POSTO JUNTA DE FREGUESIA DA CAMACHA [40673/313]","POSTO JUNTA DE FREGUESIA DE CAMPANÁRIO [40674/334]","POSTO JUNTA FREAMUNDE [40675/22255]","POSTO LAGAMEÇAS [40684/24176]","POSTO LANDEIRA [40696/24176]","POSTO LANHESES (VIANA DO CASTELO) [40699/22108]","POSTO LIVRAMENTO (FUNCHAL) [30004/24971]","POSTO LONGOMEL [40732/24196]","POSTO LORETO [30000/309]","POSTO LOUSADO (VNF) [30226/22337]","POSTO MACIEIRA DE CAMBRA [23236/23384]","POSTO MADALENAS (STº ANTÓNIO) [30109/24971]","POSTO MAIA (S. MIGUEL) [30102/20115]","POSTO MARINHA DAS ONDAS [40768/23142]","POSTO MEDAS (GONDOMAR) [40785/22205]","POSTO MELRES (GONDOMAR) [40794/22205]","POSTO MILHEIROS (MAIA) [40802/22348]","POSTO MILHEIRÓS DE POIARES [40803/23316]","POSTO MONTE DE CAPARICA [30131/21190]","POSTO MOREIRA DE CONEGOS [40851/22319]","POSTO MOZELOS [30100/23345]","POSTO NINE [30227/22337]","POSTO NOGUEIRA (MAIA) [40874/22348]","POSTO OLIVAL [40926/21256]","POSTO PE DE MOURA (LOMBA) [40771/22205]","POSTO PEGÕES VELHOS [29917/24176]","POSTO PEGÕES-CRUZAMENTO [41005/24176]","POSTO POCEIRÃO [30138/24135]","POSTO PONTA DELGADA (MADEIRA) [41050/334]","POSTO PORTEL [30130/24192]","POSTO REDONDO [41110/24208]","POSTO RIBA DE AVE (VNF) [41123/22319]","POSTO ROMARIZ (FEIRA) [41138/23316]","POSTO RUA DE DENTRO (MT CAPARICA) [30234/21190]","POSTO S JORGE (SANTANA) [41156/327]","POSTO S MARTINHO DO CAMPO [22293/22307]","POSTO S. GONÇALO [30152/24971]","POSTO S. JOÃO DE VER [41167/23345]","POSTO S. ROQUE [41187/23274]","POSTO SALIR DE MATOS [41232/23156]","POSTO SANDIM [41240/22160]","POSTO SANTA MARIA DE LAMAS [30101/23345]","POSTO SANTANA (PORTEL) [41270/24192]","POSTO SANTIAGO DA GUARDA [41275/23124]","POSTO SANTO ANTÓNIO [41288/24971]","POSTO SÃO MARTINHO DO PORTO [41311/23109]","POSTO SÃO PAIO DE OLEIROS [41312/23345]","POSTO SÃO PEDRO PDL [41314/20101]","POSTO SERZEDELO (RIBA DE AVE) [41345/22319]","POSTO SILVEIRA (TORRES VEDRAS) [41350/21331]","POSTO SOBRADO (VALONGO) [41356/22324]","POSTO SOUSELAS [41370/23196]","POSTO TAVEIRO [30126/23196]","POSTO TERMAS S. VICENTE [41393/22163]","POSTO TOLOSA [244/24184]","POSTO TRAVAGEM (ERMESINDE) [41415/22181]","POSTO VALBOM [22321/22205]","POSTO VALE DE AÇOR [41446/24196]","POSTO VENDA NOVA (AMADORA) [41478/21196]","POSTO VIDIGUEIRA [30097/24192]","POSTO VIEIRA DE LEIRIA [29922/23245]"]
+
+		if(instalação !=""){
+			document.getElementById("posto0").checked = true;
+		}
+		else {
+			document.getElementById("posto0").checked = false;
+		}
 		var linha = 1
 		//var posto = instalação.includes("POSTO")
 		if(filtro == "lojas"){
@@ -595,9 +603,9 @@
 			var value = e.options[e.selectedIndex].value;
 			var instalação = e.options[e.selectedIndex].text;
 		}
-		if (instalação == ""){
-			erro = "instalação não definida"
-		}
+		//if (instalação == ""){
+		//	erro = "instalação não definida"
+		//}
 		//if (data == ""){
 		//	erro = "Data não definida"
 		//}
@@ -611,16 +619,27 @@
 			erro = "Ano não definido"
 		}
 		var data = dia+"/"+mês+"/"+ano
-		if (instalação != ""){
-			var instTotal = instalação.length;
-			var posIMO = instalação.indexOf("#");
-			var cttimo = instalação.substring(posIMO+1,instTotal)
-			var instalação = instalação.substring(0,posIMO)
+		//if (instalação != ""){
+		//	var instTotal = instalação.length;
+		//	var posIMO = instalação.indexOf("#");
+		//	var cttimo = instalação.substring(posIMO+1,instTotal)
+		//	var instalação = instalação.substring(0,posIMO)
 			//alert(cttimo)
-		}
+		//}
 		//
 
 		var postosAdicionais = "";
+		var marcado = document.getElementById("posto0").checked;
+		var adicional = instalação;
+		if ((adicional != "") && (marcado == true)){
+			var instTotal = adicional.length;
+			var posIMO = adicional.indexOf("#");
+			var cttimo0 = adicional.substring(posIMO+1,instTotal)
+			var instalação0 = adicional.substring(0,posIMO)
+			var postosAdicionais ="-CTTIMO00:"+cttimo0+": "+instalação0+"%0D%0A"
+			var instalação = instalação0;
+			var cttimo = cttimo0;
+		}
 		var marcado = document.getElementById("posto1").checked;
 		var adicional = document.getElementById("postos1").value;
 		if ((adicional != "") && (marcado == true)){
@@ -629,7 +648,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo1 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação1 = adicional.substring(0,posIMO1)
-			var postosAdicionais ="-CTTIMO01:"+cttimo1+": "+instalação1
+			var postosAdicionais =postosAdicionais+"-CTTIMO01:"+cttimo1+": "+instalação1+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação1;
+				var cttimo = cttimo1;
+			}
 		}
 		var adicional = document.getElementById("postos2").value;
 		var marcado = document.getElementById("posto2").checked;
@@ -639,7 +662,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo2 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação2 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO02:"+cttimo2+": "+instalação2
+			var postosAdicionais =postosAdicionais+"-CTTIMO02:"+cttimo2+": "+instalação2+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação2;
+				var cttimo = cttimo2;
+			}
 		}
 		var adicional = document.getElementById("postos3").value;
 		var marcado = document.getElementById("posto3").checked;
@@ -649,7 +676,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo3 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação3 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO03:"+cttimo3+": "+instalação3
+			var postosAdicionais =postosAdicionais+"-CTTIMO03:"+cttimo3+": "+instalação3+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação3;
+				var cttimo = cttimo3;
+			}
 		}
 		var adicional = document.getElementById("postos4").value;
 		var marcado = document.getElementById("posto4").checked;
@@ -659,7 +690,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo4 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação4 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO04:"+cttimo4+": "+instalação4
+			var postosAdicionais =postosAdicionais+"-CTTIMO04:"+cttimo4+": "+instalação4+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação4;
+				var cttimo = cttimo4;
+			}
 		}
 		var adicional = document.getElementById("postos5").value;
 		var marcado = document.getElementById("posto5").checked;
@@ -669,7 +704,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo5 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação5 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO05:"+cttimo5+": "+instalação5
+			var postosAdicionais =postosAdicionais+"-CTTIMO05:"+cttimo5+": "+instalação5+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação5;
+				var cttimo = cttimo5;
+			}
 		}
 		var adicional = document.getElementById("postos6").value;
 		var marcado = document.getElementById("posto6").checked;
@@ -679,7 +718,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo6 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação6 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO06:"+cttimo6+": "+instalação6
+			var postosAdicionais =postosAdicionais+"-CTTIMO06:"+cttimo6+": "+instalação6+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação6;
+				var cttimo = cttimo6;
+			}
 		}
 		var adicional = document.getElementById("postos7").value;
 		var marcado = document.getElementById("posto7").checked;
@@ -689,7 +732,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo7 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação7 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO07:"+cttimo7+": "+instalação7
+			var postosAdicionais =postosAdicionais+"-CTTIMO07:"+cttimo7+": "+instalação7+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação7;
+				var cttimo = cttimo7;
+			}
 		}
 		var adicional = document.getElementById("postos8").value;
 		var marcado = document.getElementById("posto8").checked;
@@ -699,7 +746,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo8 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação8 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO08:"+cttimo8+": "+instalação8
+			var postosAdicionais =postosAdicionais+"-CTTIMO08:"+cttimo8+": "+instalação8+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação8;
+				var cttimo = cttimo8;
+			}
 		}
 		var adicional = document.getElementById("postos9").value;
 		var marcado = document.getElementById("posto9").checked;
@@ -709,7 +760,11 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo9 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação9 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO09:"+cttimo9+": "+instalação9
+			var postosAdicionais =postosAdicionais+"-CTTIMO09:"+cttimo9+": "+instalação9+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação9;
+				var cttimo = cttimo9;
+			}
 		}
 		var adicional = document.getElementById("postos10").value;
 		var marcado = document.getElementById("posto10").checked;
@@ -719,19 +774,26 @@
 			var posIMO2 = adicional.indexOf("/");
 			var cttimo10 = adicional.substring(posIMO1+1,posIMO2)
 			var instalação10 = adicional.substring(0,posIMO1)
-			var postosAdicionais =postosAdicionais+"%0D%0A-CTTIMO10:"+cttimo10+": "+instalação10
+			var postosAdicionais =postosAdicionais+"-CTTIMO10:"+cttimo10+": "+instalação10+"%0D%0A"
+			if(instalação==""){
+				var instalação = instalação10;
+				var cttimo = cttimo10;
+			}
 		}
-		if(postosAdicionais!=""){var postosAdicionais="%0D%0A___________________________%0D%0AIncluir instalações dependentes:%0D%0A"+postosAdicionais}
+		if(postosAdicionais!=""){var postosAdicionais="%0D%0A%0D%0AINSTALAÇÕES:%0D%0A"+postosAdicionais}
 		//alert(postosAdicionais)
-
+		if(postosAdicionais==""){
+			var erro = "Não existem instalações definidas!"
+		}
 		if (erro !="" ){
 			alert(erro)
 		}
 		if (erro =="" ){
 			var assunto = "mailto:"+"?cc=imotalismaservice"+"@"+"ctt.pt"+"&subject="+encodeURIComponent(tipo)+" - "+encodeURIComponent(instalação)+" - "+encodeURIComponent(data);
-			var corpo = "&body=FORMULARIO DE PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0A-CTTIMO: "+encodeURIComponent(cttimo)+"%0D%0A-TIPO: "+encodeURIComponent(tipo)+"%0D%0A-DATA: "+encodeURIComponent(data)+"%0D%0A-INSTALAÇÃO: "+encodeURIComponent(instalação);
+			var corpo = "&body=FORMULARIO DE PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0A"
+		  var corpo = corpo+"-TIPO: "+encodeURIComponent(tipo)+"%0D%0A-DATA: "+encodeURIComponent(data);
 			if(postosAdicionais!=""){var corpo = corpo+postosAdicionais};
-			var corpo = corpo+"%0D%0A%0D%0A_______________________________________________%0D%0A                                        INSTRUÇÕES:%0D%0A          1) Preencha o endereço do destinatário%0D%0A          2) Anexe o template preenchido e assinado%0D%0A          3) Envie o email%0D%0A_______________________________________________";
+			var corpo = corpo+"%0D%0A_______________________________________________%0D%0A                                        INSTRUÇÕES:%0D%0A          1) Preencha o endereço do destinatário%0D%0A          2) Anexe o template preenchido e assinado%0D%0A          3) Envie o email%0D%0A_______________________________________________";
 			var email = assunto+corpo;
 			window.location.href = email;
 		}
@@ -917,12 +979,14 @@ select.data4 {
 	font-weight: bold;
 }
 select.instalação {
-	width: 1000px;
+	-border: 0px;
+	width: 960px;
 	-background-color: rgb(222,0,0);
 	-color: white;
 	padding: 5px;
 	font-family: arial;
 	font-weight: bold;
+	float: right;
 }
 div.individualradio {
 	width: 810px;
@@ -1142,6 +1206,7 @@ a:hover, a:active {
 				<input class="radios" type="radio" name="filtro" value="localidade" onchange="atualizar()"> LOCALIDADE
 				</div>
 				<br><br>
+				<input class="instalação2" type="checkbox" name="tipo" id="posto0" value="" readonly >
 				<select class="instalação" name="Piso" id="nome" onchange="atualizar()" onfocus="infoInstalação()">
 					<OPTION></OPTION>
 					<OPTION>ABÓBODA - LOJA 8811478 #21102</OPTION>
@@ -3919,7 +3984,7 @@ a:hover, a:active {
 					<OPTION>VIEIRA DE LEIRIA - POSTO 9906655 #29922</OPTION>
 				</select>
 
-			</br>
+			</br></br>
 			<DIV id="incluir">
 				<div class="descrição2">
 					INCLUIR INSTALAÇÕES DEPENDENTES:
@@ -3963,7 +4028,7 @@ a:hover, a:active {
 		<br><br>
 
 		<div class="foot" align="right">
-			PEDIDO/RECOLHA DE FUNDOS v1.6
+			PEDIDO/RECOLHA DE FUNDOS v1.7
 		</div>
 	</div>
 
