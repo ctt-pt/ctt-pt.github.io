@@ -839,7 +839,7 @@
     }
     else {
       var assunto = "mailto: paulo.j.machado"+"@"+"ctt.pt"+"?subject=SINISTRO "+encodeURIComponent(nctt)+" - "+encodeURIComponent(ano)+"/"+encodeURIComponent(mês)+"/"+encodeURIComponent(dia);
-      var corpo = "&body=# PARTICIPAÇÃO DE SINISTRO"+"%0D%0A%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL:%0D%0A%0D%0A     1) Declaração Amigável de Acidente Automóvel%0D%0A%0D%0A     2) Fotografias dos danos no veículo%0D%0A%0D%0A_______________________________________________";
+      var corpo = "&body=[PARTICIPAÇÃO DE SINISTRO]"+"%0D%0A%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL:%0D%0A%0D%0A     1) Declaração Amigável de Acidente Automóvel%0D%0A%0D%0A     2) Fotografias dos danos no veículo%0D%0A%0D%0A_______________________________________________";
       var corpo = corpo + "%0D%0A%0D%0A-Data: "+encodeURIComponent(ano)+encodeURIComponent(mês)+encodeURIComponent(dia)+"%0D%0A-N.º Mecanográfico: "+encodeURIComponent(mecanográfico)+"%0D%0A-Veículo: "+encodeURIComponent(nctt);
       var corpo = corpo+"%0D%0A-Intervenção da Autoridade: "+encodeURIComponent(autoridade)+"%0D%0A-Acidente laboral: "+encodeURIComponent(acidente)+"%0D%0A-Culpa do condutor: "+encodeURIComponent(culpa)+"%0D%0A-Danos: "+encodeURIComponent(danos)+"%0D%0A-Danos no veículo (resumo): "+encodeURIComponent(danosResumo)+"%0D%0A-Descritivo: "+encodeURIComponent(descrição);
       if (terceiro == "Sim"){
@@ -924,7 +924,7 @@
   </form>
   <! ------------------------------------------------------------- OBJ CC -->
   <form class="curto" action="index.html" method="post" id="autoridadeIDon">
-    <input class="curto" type="text" name="" value="" id="autoridadeID" oninput="mostrar()" title="Exemplo: PSP COIMBRA" maxlength="15">
+    <input class="curto" type="text" name="" value="" id="autoridadeID" title="Exemplo: PSP COIMBRA" maxlength="15">
     <div class="individual" id="descObjetoCC">
       DESCRIÇÃO DA AUTORIDADE
     </div>
@@ -1028,7 +1028,7 @@
 
   <!---------------------------------------------------------------nome-->
   <form class="médio" action="index.html" method="post" id="terceiroNome">
-    <input class="médio" type="text" name="" value="" id="nomeTerceiro" oninput="mostrar()" maxlength="40">
+    <input class="médio" type="text" name="" value="" id="nomeTerceiro" maxlength="40">
     <div class="individual" id="descZona">
       NOME DO CONDUTOR
     </div>
@@ -1079,7 +1079,7 @@
   </div>
   <br>
   <div class="foot" align="right">
-    FORMULÁRIO GEF SINISTROS v1.3
+    FORMULÁRIO GEF SINISTROS v1.4
   </div>
   <br><br>
 
