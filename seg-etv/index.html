@@ -793,7 +793,7 @@
 			var corpo = "&body=FORMULARIO DE PEDIDO DE FORNECIMENTO/RECOLHA DE FUNDOS"+"%0D%0A%0D%0A"
 		  var corpo = corpo+"-TIPO: "+encodeURIComponent(tipo)+"%0D%0A-DATA: "+encodeURIComponent(data);
 			if(postosAdicionais!=""){var corpo = corpo+postosAdicionais};
-			var corpo = corpo+"%0D%0A_______________________________________________%0D%0A                                        INSTRUÇÕES:%0D%0A          1) Preencha o endereço do destinatário%0D%0A          2) Anexe o template preenchido e assinado%0D%0A          3) Envie o email%0D%0A_______________________________________________%0D%0AATENÇÃO!%0D%0ANÃO PODE ALTERAR O ASSUNTO NEM O CORPO DESTE EMAIL!%0D%0A_______________________________________________%0D%0A";
+			var corpo = corpo+"%0D%0A_______________________________________________%0D%0A                                        INSTRUÇÕES:%0D%0A          1) Preencha o endereço do destinatário%0D%0A          2) Anexe o template preenchido e assinado%0D%0A          3) Envie o email%0D%0A%0D%0AATENÇÃO!%0D%0ANÃO ALTERE O ASSUNTO NEM O CORPO DESTE EMAIL!%0D%0A_______________________________________________%0D%0A";
 			var email = assunto+corpo;
 			window.location.href = email;
 		}
@@ -4028,7 +4028,7 @@ a:hover, a:active {
 		<br><br>
 
 		<div class="foot" align="right">
-			PEDIDO/RECOLHA DE FUNDOS v1.7 r200603
+			PEDIDO/RECOLHA DE FUNDOS v1.7 r200604
 		</div>
 	</div>
 
