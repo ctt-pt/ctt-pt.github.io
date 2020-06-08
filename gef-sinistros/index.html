@@ -393,6 +393,7 @@
     terceiroCompanhia.style.display = "none";
     terceiroApólice.style.display = "none";
     autoridadeIDon.style.display = "none";
+    qivBloco.style.display = "none";
 
     permissão.style.display = "none";
     permissãoie.style.display = "none";
@@ -428,6 +429,12 @@
     //obter danos
     var danos = ""
     var danosResumo = ""
+    var x = document.getElementById("danos.qiv").checked;
+    if (x==true) {
+      qivBloco.style.display = "block";
+      danos=danos+document.getElementById("danos.qiv").value+", "
+      danosResumo=danosResumo+"QIV, "
+    }
     var x = document.getElementById("danos.te").checked;
     if (x==true) {
       danos=danos+document.getElementById("danos.te").value+", "
@@ -814,9 +821,35 @@
     }
     var x = document.getElementById("danos.fd").checked;
     if (x==true) {
-      danos=danos+"X"
+      danos=danos+"X,"
       //danos=danos+document.getElementById("danos.fd").value //+", "
       danosResumo=danosResumo+"FD, "
+    }
+    else {
+      danos=danos+", "
+    }
+    var x = document.getElementById("danos.qiv").checked;
+    if (x==true) {
+      danos=danos+"X,"
+      //danos=danos+document.getElementById("danos.fd").value //+", "
+      danosResumo=danosResumo+"QIV, "
+      var qiv = document.getElementById("qiv").value;
+      if (qiv){
+        descrição=descrição+" - vidros partidos: "+qiv
+        //danos=danos+"X, "
+      }
+      else {
+        var erro = erro+"\n"+"Descrição de vidros partidos não preenchida"
+      }
+    }
+    else {
+      danos=danos+", "
+    }
+    var x = document.getElementById("danos.pi").checked;
+    if (x==true) {
+      //qivBloco.style.display = "block";
+      danos=danos+"X"
+      danosResumo=danosResumo+"PI, "
     }
     else {
       //danos=danos+". "
@@ -834,12 +867,13 @@
     if (danos == ""){
       var erro = erro+"\n"+"Danos não indicados"
     }
+
     if (erro !=""){
       alert (erro)
     }
     else {
       var assunto = "mailto:rp.automation02"+"@"+"ctt.pt"+"?subject=PARTICIPAÇÃO DE SINISTRO "+encodeURIComponent(nctt)+" - "+encodeURIComponent(ano)+"/"+encodeURIComponent(mês)+"/"+encodeURIComponent(dia);
-      var corpo = "&body=[PARTICIPAÇÃO DE SINISTRO]"+"%0D%0A%0D%0ADEVE ADICIONAR OS ANEXOS ANTES DE ENVIAR O EMAIL:%0D%0A%0D%0A     1) Declaração Amigável de Acidente Automóvel%0D%0A%0D%0A     2) Fotografias dos danos no veículo%0D%0A%0D%0A(Se não utiliza o Outlook deverá confirmar no final se o email foi enviado ou se continua nos Rascunhos)%0D%0A_______________________________________________";
+      var corpo = "&body=[PARTICIPAÇÃO DE SINISTRO]"+"%0D%0A%0D%0ADEVE ANEXAR A DECLARAÇÃO AMIGÁVEL DE ACIDENTE AUTOMÓVEL ANTES DE ENVIAR O EMAIL.%0D%0ASEM DECLARAÇÃO AMIGÁVEL DE ACIDENTE AUTOMÓVEL A PARTICIPAÇÃO DE SINISTRO NÃO SERÁ CONSIDERADA VÁLIDA!%0D%0A%0D%0A(Se não utiliza o Outlook deverá confirmar no final se o email foi enviado ou se continua nos Rascunhos)%0D%0A_______________________________________________";
       var corpo = corpo + "%0D%0A%0D%0A-Data: "+encodeURIComponent(ano)+encodeURIComponent(mês)+encodeURIComponent(dia)+"%0D%0A-N.º Mecanográfico: "+encodeURIComponent(mecanográfico)+"%0D%0A-Veículo: "+encodeURIComponent(nctt);
       var corpo = corpo+"%0D%0A-Intervenção da Autoridade: "+encodeURIComponent(autoridade)+"%0D%0A-Acidente laboral: "+encodeURIComponent(acidente)+"%0D%0A-Culpa do condutor: "+encodeURIComponent(culpa)+"%0D%0A-Danos: "+encodeURIComponent(danos)+"%0D%0A-Danos no veículo (resumo): "+encodeURIComponent(danosResumo)+"%0D%0A-Descritivo: "+encodeURIComponent(descrição);
       if (terceiro == "Sim"){
@@ -979,21 +1013,34 @@
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esquerda" id="danos.le" > 7 - Lateral Esquerda<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Tejadilho" id="danos.tj" > 8 - Tejadilho<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Direita" id="danos.ld" > 9 - Lateral Direita<br>
+
 </div>
   <div class="danos" id="descZona" align="left">
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esq. (traseira)" id="danos.let" > 4 - Lateral Esq. (traseira)<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Mala" id="danos.m" > 5 - Mala<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Dir. (traseira)" id="danos.ldt" > 6 - Lateral Dir. (traseira)<br>
+<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Parte inferior" id="danos.pi" > Parte inferior do veículo<br>
 
   </div>
   <div class="danos" id="descZona" align="left">
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira Esquerda" id="danos.te" > 1 - Traseira Esquerda<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira" id="danos.t" > 2 - Traseira<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira Direita" id="danos.td" > 3 - Traseira Direita<br>
+<br>
+<input type="checkbox" name="vehicle1" onclick="mostrar()" value="Quebra isolada de vidros" id="danos.qiv" > Quebra isolada de vidros<br>
+  </div>
 
+</form>
+<BR><BR><BR><BR><BR><BR><br>
+<div>
+<form class="médio" action="index.html" method="post" id="qivBloco">
+  <input class="médio" type="text" name="" value="" id="qiv" maxlength="40">
+  <div class="individual" id="qiv-desc">
+    DESCRIÇÃO VIDROS PARTIDOS:
   </div>
 </form>
-
+</div>
 <img class="veículo" src="carro.jpg" alt="" id="auto">
 
 <form class="longo" action="index.html" method="post">
@@ -1079,7 +1126,7 @@
   </div>
   <br>
   <div class="foot" align="right">
-    FORMULÁRIO GEF SINISTROS v1.4.2
+    FORMULÁRIO GEF SINISTROS v1.4.3
   </div>
   <br><br>
 
