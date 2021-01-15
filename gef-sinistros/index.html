@@ -172,8 +172,12 @@
     padding-top: 10px;
   }
   form.data2 {
-    width: 430px;
+    width: 462px;
     padding-top: 4px;
+  }
+  form.veiculo {
+    width: 442px;
+    padding-top: 10px;
   }
   form.meca {
     width: 404px;
@@ -267,6 +271,13 @@
     width: 200px;
     height: 30px;
     padding: 10px;
+    float: right
+  }
+  input.curto1 {
+    width: 35px;
+    height: 30px;
+    padding: 10px;
+    margin-right: 10px;
     float: right
   }
   input.curto2 {
@@ -609,12 +620,35 @@
     }
 
 
-    var nctt = document.getElementById("nctt").value;
-    if (nctt){
+    //var nctt = document.getElementById("nctt").value;
+    //if (nctt){
+    //}
+    //else {
+    //  var erro = erro+"\n"+"N.º de veículo não indicado"
+    //}
+
+    var nctt1 = document.getElementById("nctt1").value;
+    if (nctt1){
     }
     else {
-      var erro = erro+"\n"+"N.º de veículo não indicado"
+      var erro = erro+"\n"+"N.º de veículo incompleto (?-NNNN-L)"
     }
+
+    var nctt2 = document.getElementById("nctt2").value;
+    if (nctt2){
+    }
+    else {
+      var erro = erro+"\n"+"N.º de veículo incompleto (L-????-L)"
+    }
+
+    var nctt3 = document.getElementById("nctt3").value;
+    if (nctt3){
+    }
+    else {
+      var erro = erro+"\n"+"N.º de veículo incompleto  (L-NNNN-?)"
+    }
+
+    var nctt = nctt1+"-"+nctt2+"-"+nctt3;
 
     var e = document.getElementById("autoridade");
     var value = e.options[e.selectedIndex].value;
@@ -828,6 +862,24 @@
     else {
       danos=danos+", "
     }
+    var x = document.getElementById("danos.ere").checked;
+    if (x==true) {
+      danos=danos+"X,"
+      //danos=danos+document.getElementById("danos.fd").value //+", "
+      danosResumo=danosResumo+"EE, "
+    }
+    else {
+      danos=danos+", "
+    }
+    var x = document.getElementById("danos.erd").checked;
+    if (x==true) {
+      danos=danos+"X,"
+      //danos=danos+document.getElementById("danos.fd").value //+", "
+      danosResumo=danosResumo+"ED, "
+    }
+    else {
+      danos=danos+", "
+    }
     var x = document.getElementById("danos.qiv").checked;
     if (x==true) {
       danos=danos+"X,"
@@ -864,9 +916,11 @@
     }
     document.getElementById("danos").value = danosResumo;
 
-    if (danos == ""){
-      var erro = erro+"\n"+"Danos não indicados"
-    }
+    //if (danos.includes("X")){
+    //}
+    //else {
+    //  var erro = erro+"\n"+"Danos não indicados"
+    //}
 
     if (erro !=""){
       alert (erro)
@@ -921,7 +975,13 @@
 
     <form class="data2" action="index.html" method="post">
       <input class="curto2" type="text" name="" value="" id="dia" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="2">
+      <div class="matrícula" id="descZona">
+        -
+      </div>
       <input class="curto2" type="text" name="" value="" id="mês" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="2">
+      <div class="matrícula" id="descZona">
+        -
+      </div>
       <input class="curto3" type="text" name="" value="" id="ano" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="4">
       <div class="individual" id="descZona">
         DATA (AAAA-MM-DD)
@@ -938,12 +998,20 @@
     </div>
   </form>
 
-
   <!---------------------------------------------------------------mecanografico-->
-  <form class="curto4" action="index.html" method="post">
-    <input class="curto4" type="text" name="" value="" id="nctt" oninput="mostrar()" title="Exemplo: C-1234-A" maxlength="8">
+
+  <form class="veiculo" action="index.html" method="post">
+    <input class="curto1" type="text" name="" value="" id="nctt3" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="1">
+    <div class="matrícula" id="descZona">
+      -
+    </div>
+    <input class="curto3" type="text" name="" value="" id="nctt2" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="4">
+    <div class="matrícula" id="descZona">
+      -
+    </div>
+    <input class="curto1" type="text" name="" value="" id="nctt1" oninput="mostrar()" title="Formato da data:&#13;AAAA-MM-DD" maxlength="1">
     <div class="individual" id="descZona">
-      N.º CTT (VEÍCULO)
+      N.º CTT (VEÍCULO: L-NNNN-L)
     </div>
   </form>
   <! ------------------------------------------------------------- OBJ CC -->
@@ -1008,27 +1076,25 @@
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esq. (frente)" id="danos.lef" > 10 - Lateral Esq. (frente)<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Capô" id="danos.c" > 11 - Capô<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Dir. (frente)" id="danos.ldf" > 12 - Lateral Dir. (frente)<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Parte inferior" id="danos.pi" > Parte inferior do veículo<br>
 </div>
   <div class="danos" id="descZona" align="left">
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esquerda" id="danos.le" > 7 - Lateral Esquerda<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Tejadilho" id="danos.tj" > 8 - Tejadilho<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Direita" id="danos.ld" > 9 - Lateral Direita<br>
-
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Quebra isolada de vidros" id="danos.qiv" > Quebra isolada de vidros<br>
 </div>
   <div class="danos" id="descZona" align="left">
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esq. (traseira)" id="danos.let" > 4 - Lateral Esq. (traseira)<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Mala" id="danos.m" > 5 - Mala<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Dir. (traseira)" id="danos.ldt" > 6 - Lateral Dir. (traseira)<br>
-<br>
-    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Parte inferior" id="danos.pi" > Parte inferior do veículo<br>
-
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Espelho Esquerdo" id="danos.erd" > 17 - Espelho Direito<br>
   </div>
   <div class="danos" id="descZona" align="left">
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira Esquerda" id="danos.te" > 1 - Traseira Esquerda<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira" id="danos.t" > 2 - Traseira<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Traseira Direita" id="danos.td" > 3 - Traseira Direita<br>
-<br>
-<input type="checkbox" name="vehicle1" onclick="mostrar()" value="Quebra isolada de vidros" id="danos.qiv" > Quebra isolada de vidros<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Espelho Esquerdo" id="danos.ere" > 16 - Espelho Esquerdo<br>
   </div>
 
 </form>
