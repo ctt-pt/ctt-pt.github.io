@@ -904,6 +904,15 @@
       danosResumo=danosResumo+"PI, "
     }
     else {
+      danos=danos+", "
+    }
+    var x = document.getElementById("danos.sd").checked;
+    if (x==true) {
+      //qivBloco.style.display = "block";
+      danos=danos+"X"
+      danosResumo=danosResumo+"SD, "
+    }
+    else {
       //danos=danos+". "
     }
     //tamDanos = danos.length
@@ -1071,6 +1080,7 @@
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Frente Esquerda" id="danos.fe" > 13 - Frente Esquerda<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Frente" id="danos.f" > 14 - Frente<br>
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Frente Direita" id="danos.fd" > 15 - Frente Direita<br>
+    <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Sem danos" id="danos.sd" > Sem danos<br>
   </div>
   <div class="danos" id="descZona" align="left">
     <input type="checkbox" name="vehicle1" onclick="mostrar()" value="Lateral Esq. (frente)" id="danos.lef" > 10 - Lateral Esq. (frente)<br>
@@ -1192,7 +1202,7 @@
   </div>
   <br>
   <div class="foot" align="right">
-    FORMULÁRIO GEF SINISTROS v1.4.3
+    FORMULÁRIO GEF SINISTROS v1.5
   </div>
   <br><br>
 
