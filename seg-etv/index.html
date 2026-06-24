@@ -477,11 +477,13 @@
 	function abrirOutlookWeb(subject, body) {
 
     var url =
-        "https://outlook.office.com/mail/deeplink/compose" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+    "https://outlook.office.com/mail/deeplink/compose" +
+    "?to=" + encodeURIComponent("") +
+    "&cc=" + encodeURIComponent("rp.automation12@ctt.pt") +
+    "&subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
 
-    window.open(url, "_blank");
+	window.open(url, "_blank");
 	}
 		
 	function submeter(){
