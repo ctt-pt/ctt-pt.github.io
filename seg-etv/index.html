@@ -965,13 +965,20 @@ body +=
 abrirOutlookWeb(subject, body);
 		}
 	}
-	function criar(){
-		var assunto = "mailto:"+"imotalismaservice"+"@"+"ctt.pt"+"?subject=Criação de instalação";
-		var corpo = "&body=■ Pedido de criação de instalação"+"%0D%0A%0D%0A►Tipologia da Instalação (Loja/Posto): %0D%0A►Nome da Instalação: %0D%0A►Código Orgânico (CO): %0D%0A%0D%0A%0D%0A%0D%0A____________________________________________________%0D%0ADEVE PREENCHER OS TRÊS CAMPOS ACIMA ANTES DE ENVIAR!";
-		var email = assunto+corpo;
-		window.location.href = email;
+function criar(){
 
-	}
+    var subject = "Criação de instalação";
+
+    var body =
+        "■ Pedido de criação de instalação\n\n" +
+        "►Tipologia da Instalação (Loja/Posto):\n" +
+        "►Nome da Instalação:\n" +
+        "►Código Orgânico (CO):\n\n\n" +
+        "____________________________________________________\n" +
+        "DEVE PREENCHER OS TRÊS CAMPOS ACIMA ANTES DE ENVIAR!";
+
+    abrirOutlookWeb(subject, body);
+}
 
 	</script>
 </head>
